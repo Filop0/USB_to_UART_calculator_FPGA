@@ -1,0 +1,31 @@
+# Dzienniki i logi Vivado
+*.jou
+*.log
+*.str
+*.dmp
+hs_err_pid*.log
+
+# Foldery z danymi tymczasowymi, cache i wynikami kompilacji
+.Xil/
+*.cache/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+
+# Pliki symulacji (XSIM)
+*.wdb
+*.protoinst
+*.pb
+
+# Wygenerowane pliki binarne i platformy sprzętowe (odkomentuj, jeśli chcesz wersjonować releasy)
+*.bit
+*.bin
+*.ltx
+*.xsa
+*.hdf
+
+# Pliki systemowe i konfiguracyjne edytorów
+.DS_Store
+Thumbs.db
+.vscode/
