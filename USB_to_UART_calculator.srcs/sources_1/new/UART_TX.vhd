@@ -1,4 +1,8 @@
-----------------------------------------------------------------------
+----------------------------------------------------------------------------------
+-- Module Name: UART_TX
+-- Project Name: USBtoUART FPGA Calculator
+-- Target Devices: Digilent Cmod S7
+----------------------------------------------------------------------------------
 -- Set Generic g_CLKS_PER_BIT as follows:
 -- g_CLKS_PER_BIT = (Frequency of i_Clk)/(Frequency of UART)
 -- For Digilent Cmod S7: 12 MHz Clock, 115200 baud UART

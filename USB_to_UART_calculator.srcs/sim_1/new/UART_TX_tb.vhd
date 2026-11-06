@@ -85,7 +85,8 @@ begin
       report "Test Failed - Incorrect Byte Received" severity note;
     end if;
  
-    assert false report "Tests Complete" severity failure;
+    wait for 2 us;
+    std.env.stop;
      
   end process;
    
