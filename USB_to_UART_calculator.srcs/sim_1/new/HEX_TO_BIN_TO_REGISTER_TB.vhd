@@ -71,13 +71,21 @@ begin
     -- TEST 1: Działanie na pojedynczych cyfrach: 7 + 3
     -- Sekwencja: '7' -> Enter (0x0A) -> '+' -> Enter (0x0A) -> '3' -> Enter (0x0A)
     --------------------------------------------------------------------------
-    SEND_BYTE_2CLK(X"37", r_Clk, r_RX_DV, r_RX_Byte); -- '7'
+    SEND_BYTE_2CLK(X"36", r_Clk, r_RX_DV, r_RX_Byte); -- '6'
+    SEND_BYTE_2CLK(X"35", r_Clk, r_RX_DV, r_RX_Byte); -- '5'
+    SEND_BYTE_2CLK(X"35", r_Clk, r_RX_DV, r_RX_Byte); -- '5'
+    SEND_BYTE_2CLK(X"33", r_Clk, r_RX_DV, r_RX_Byte); -- '3'
+     SEND_BYTE_2CLK(X"35", r_Clk, r_RX_DV, r_RX_Byte); -- '5'
     SEND_BYTE_2CLK(X"0A", r_Clk, r_RX_DV, r_RX_Byte); -- Enter
 
     SEND_BYTE_2CLK(X"2B", r_Clk, r_RX_DV, r_RX_Byte); -- '+' (kod "00")
     SEND_BYTE_2CLK(X"0A", r_Clk, r_RX_DV, r_RX_Byte); -- Enter
 
+    SEND_BYTE_2CLK(X"36", r_Clk, r_RX_DV, r_RX_Byte); -- '6'
+    SEND_BYTE_2CLK(X"35", r_Clk, r_RX_DV, r_RX_Byte); -- '5'
+    SEND_BYTE_2CLK(X"35", r_Clk, r_RX_DV, r_RX_Byte); -- '5'
     SEND_BYTE_2CLK(X"33", r_Clk, r_RX_DV, r_RX_Byte); -- '3'
+     SEND_BYTE_2CLK(X"35", r_Clk, r_RX_DV, r_RX_Byte); -- '5'
     SEND_BYTE_2CLK(X"0A", r_Clk, r_RX_DV, r_RX_Byte); -- Enter
 
     -- Czas na przejście przez s_Cleanup i powrót do s_Idle

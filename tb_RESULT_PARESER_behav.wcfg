@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="TOP_TB_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TOP_TB" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000000000 ms"></ZoomStartTime>
+      <ZoomEndTime time="7.570000001 ms"></ZoomEndTime>
+      <Cursor1Time time="2.791029999 ms"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="219"></NameColumnWidth>
+      <ValueColumnWidth column_width="76"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="8" />
+   <wvobject fp_name="/TOP_TB/s_RX_UART_Pin" type="logic">
+      <obj_property name="ElementShortName">s_RX_UART_Pin</obj_property>
+      <obj_property name="ObjectShortName">s_RX_UART_Pin</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TOP_TB/DUT/Inst_UART_RX/o_RX_Byte" type="array">
+      <obj_property name="ElementShortName">o_RX_Byte[7:0]</obj_property>
+      <obj_property name="ObjectShortName">o_RX_Byte[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TOP_TB/DUT/Inst_UART_RX/o_RX_DV" type="logic">
+      <obj_property name="ElementShortName">o_RX_DV</obj_property>
+      <obj_property name="ObjectShortName">o_RX_DV</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TOP_TB/DUT/Inst_RESULT_PARSER/i_result" type="array">
+      <obj_property name="ElementShortName">i_result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_result[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TOP_TB/s_TX_UART_Pin" type="logic">
+      <obj_property name="ElementShortName">s_TX_UART_Pin</obj_property>
+      <obj_property name="ObjectShortName">s_TX_UART_Pin</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TOP_TB/DUT/Inst_UART_TX/i_TX_Byte" type="array">
+      <obj_property name="ElementShortName">i_TX_Byte[7:0]</obj_property>
+      <obj_property name="ObjectShortName">i_TX_Byte[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TOP_TB/s_Clk" type="logic">
+      <obj_property name="ElementShortName">s_Clk</obj_property>
+      <obj_property name="ObjectShortName">s_Clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TOP_TB/s_sim_done" type="other">
+      <obj_property name="ElementShortName">s_sim_done</obj_property>
+      <obj_property name="ObjectShortName">s_sim_done</obj_property>
+   </wvobject>
+</wave_config>

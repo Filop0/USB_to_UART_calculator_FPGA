@@ -22,7 +22,7 @@ entity UART_TX is
     i_TX_Byte   : in  std_logic_vector(7 downto 0);
     o_TX_Active : out std_logic;
     o_TX_Serial : out std_logic;
-    o_TX_Done   : out std_logic
+    o_TX_Done   : out std_logic -- nie będę korzystał raczej 
     );
 end UART_TX;
 
