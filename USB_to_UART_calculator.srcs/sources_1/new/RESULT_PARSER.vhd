@@ -31,7 +31,8 @@ begin
     variable decoder_raw_buffer2 : integer range 0 to 32767 := 0; -- narazie tylko dodatnie
     type digits is array (0 to 4) of integer range -1 to 9 ;
     variable digits_buffer : digits := (others => -1);
-    variable digits_length : integer range 1 to 5 := 1;
+    variable digits_length : integer range 0 to 5 := 1;
+    variable cooldown_cnt  : integer range 0 to 35 := 0;
     variable char_buffer   : integer range 0 to 9;
     variable char_pending  : boolean := false;
     variable negative      : boolean := false;
@@ -43,9 +44,7 @@ begin
     if rising_edge (i_Clk) then
     
         buf_decoder : if i_result_rdy = '1' then
-    
             decoder_raw_buffer := to_integer(unsigned(i_result));
-            decoder_raw_buffer2 := to_integer(unsigned(i_result));
             negative := false;
             digits_buffer := (others => 0);
             digits_length := 1;
@@ -79,16 +78,16 @@ begin
                 
   
             do_send_char : if ((i_TX_Active = '0') and char_pending) then -- and (decoder_raw_buffer2 /= 0)
-                if cooldown then
+                if cooldown_cnt > 0 then
                     o_TX_DV <= '0';
-                    cooldown        := false;
+                    cooldown_cnt := cooldown_cnt - 1;
                 else
     
                     send_type : if negative then -- narazie nigdy nie wejdzie
                         o_TX_Byte      <= X"2D";
                         o_TX_DV <= '1';
                         negative        := false;
-                        cooldown        := true;
+                        cooldown_cnt  := 30; -- czekaj minimum 30 taktów
     
                     elsif digits_length > 0 then -- 
                         char_buffer := digits_buffer(digits_length - 1);
@@ -106,15 +105,14 @@ begin
                             when 9 => o_TX_Byte <= X"39";
                         end case encode;
                         o_TX_DV <= '1';
-                        cooldown        := true;
-    
+                        cooldown_cnt  := 30; -- czekaj minimum 30 taktów
                         digits_length := digits_length - 1;
     
                     else
                         o_TX_Byte      <= X"0A";
                         o_TX_DV <= '1';
                         char_pending    := false;
-    
+                        cooldown_cnt := 30;
                     end if send_type;
                 end if;
             else

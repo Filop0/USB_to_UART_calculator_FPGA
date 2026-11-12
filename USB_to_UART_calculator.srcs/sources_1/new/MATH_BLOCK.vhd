@@ -24,6 +24,7 @@ architecture Behavioral of MATH_BLOCK is
 begin
 p_MATH_BLOCK : process (i_Clk)
 -- variable v_result_acc : unsigned(31 downto 0); -- mnożenie 2^16 * 2^16 daje max 32 bity zużycia
+--variable cleanup : std_logic;
 begin
     if rising_edge(i_Clk) then
     o_result_rdy <= '0';

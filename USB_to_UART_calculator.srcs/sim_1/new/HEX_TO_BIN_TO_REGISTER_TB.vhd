@@ -9,7 +9,10 @@ architecture sim of tb_HEX_TO_BIN_TO_REGISTER is
 
   -- Zegar 12 MHz (okres 83.333 ns)
   constant c_CLK_PERIOD : time := 83.333 ns;
-
+  
+  -- 1/115200:
+  constant c_BIT_PERIOD : time := 8680 ns;
+  
   -- Sygnały wejściowe do modułu
   signal r_Clk     : std_logic := '0';
   signal r_RX_DV   : std_logic := '0';
@@ -31,7 +34,7 @@ architecture sim of tb_HEX_TO_BIN_TO_REGISTER is
     signal   s_data : out std_logic_vector(7 downto 0)
   ) is
   begin
---    wait until rising_edge(s_clk);
+    wait until rising_edge(s_clk);
     s_data <= c_byte;
     s_dv   <= '1';
     
@@ -40,11 +43,12 @@ architecture sim of tb_HEX_TO_BIN_TO_REGISTER is
     
     s_dv   <= '0';
     -- Odstęp 5 taktów zegara przed kolejnym znakiem
-    wait for c_CLK_PERIOD * 1;
+    --wait for c_CLK_PERIOD * 1;
   end procedure;
 
 begin
 
+    
   -- Podpięcie Twojego modułu (Unit Under Test)
   UUT : entity work.HEX_TO_BIN_TO_REGISTER
     port map (
@@ -65,7 +69,7 @@ begin
   -- Główny proces wymuszający dane testowe
   p_TEST : process
   begin
-    --wait for c_CLK_PERIOD * 5;
+    wait for c_CLK_PERIOD * 5;
 
     --------------------------------------------------------------------------
     -- TEST 1: Działanie na pojedynczych cyfrach: 7 + 3
@@ -89,7 +93,7 @@ begin
     SEND_BYTE_2CLK(X"0A", r_Clk, r_RX_DV, r_RX_Byte); -- Enter
 
     -- Czas na przejście przez s_Cleanup i powrót do s_Idle
-    --wait for c_CLK_PERIOD * 10;
+    wait for c_CLK_PERIOD * 10;
 
     --------------------------------------------------------------------------
     -- TEST 2: Działanie wielocyfrowe: 12 * 4

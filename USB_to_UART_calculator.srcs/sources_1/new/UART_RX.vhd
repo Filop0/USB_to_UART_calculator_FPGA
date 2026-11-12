@@ -108,8 +108,12 @@ begin
                   
         -- Stay here 1 clock
         when s_Cleanup =>
-                r_SM_Main <= s_Idle;
-                r_RX_DV   <= '0';
+--            if r_Clk_Count < 1 then 
+--                r_Clk_Count <= r_Clk_Count + 1;
+--            end if;
+--            r_Clk_Count <= 0;
+            r_SM_Main <= s_Idle;
+            r_RX_DV   <= '0';
 
             
         when others =>

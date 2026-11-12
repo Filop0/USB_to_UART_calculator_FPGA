@@ -89,7 +89,9 @@ begin
         -- Send a command to the UART
         wait until rising_edge(s_Clk);
         UART_WRITE_BYTE(X"37", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
         UART_WRITE_BYTE(X"2B", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
         UART_WRITE_BYTE(X"33", s_RX_UART_Pin);
         UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
         wait until rising_edge(s_Clk);
@@ -101,7 +103,9 @@ begin
         -- Send a command to the UART
         wait until rising_edge(s_Clk);
         UART_WRITE_BYTE(X"37", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
         UART_WRITE_BYTE(X"2D", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
         UART_WRITE_BYTE(X"33", s_RX_UART_Pin);
         UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
         wait until rising_edge(s_Clk);
@@ -113,7 +117,9 @@ begin
         -- Send a command to the UART
         wait until rising_edge(s_Clk);
         UART_WRITE_BYTE(X"37", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
         UART_WRITE_BYTE(X"2A", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
         UART_WRITE_BYTE(X"33", s_RX_UART_Pin);
         UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
         wait until rising_edge(s_Clk);
@@ -126,7 +132,9 @@ begin
         wait until rising_edge(s_Clk);
         UART_WRITE_BYTE(X"32", s_RX_UART_Pin);
         UART_WRITE_BYTE(X"31", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
         UART_WRITE_BYTE(X"2F", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
         UART_WRITE_BYTE(X"33", s_RX_UART_Pin);
         UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
         wait until rising_edge(s_Clk);

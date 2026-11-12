@@ -137,10 +137,9 @@ begin
                 r_SM_Main_Reg <= s_Idle;
                 o_reg_a_overflow <= r_a_ovf;
                 o_reg_b_overflow <= r_b_ovf;
+                o_data_ready     <= '0';
                 r_acc_a       <= (others => '0');
-                o_reg_a       <= (others => '0');
-                o_reg_b       <= (others => '0');
-                o_operator <= "00";
+
                 
             when others =>
                 r_SM_Main_Reg <= s_Idle;

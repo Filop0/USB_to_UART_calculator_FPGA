@@ -10,15 +10,19 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000000000 ms"></ZoomStartTime>
-      <ZoomEndTime time="7.570000001 ms"></ZoomEndTime>
-      <Cursor1Time time="2.791029999 ms"></Cursor1Time>
+      <ZoomStartTime time="6,450.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="6,540.000001 us"></ZoomEndTime>
+      <Cursor1Time time="4,850.395500 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="219"></NameColumnWidth>
-      <ValueColumnWidth column_width="76"></ValueColumnWidth>
+      <NameColumnWidth column_width="214"></NameColumnWidth>
+      <ValueColumnWidth column_width="61"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="8" />
+   <WVObjectSize size="14" />
+   <wvobject fp_name="/TOP_TB/s_Clk" type="logic">
+      <obj_property name="ElementShortName">s_Clk</obj_property>
+      <obj_property name="ObjectShortName">s_Clk</obj_property>
+   </wvobject>
    <wvobject fp_name="/TOP_TB/s_RX_UART_Pin" type="logic">
       <obj_property name="ElementShortName">s_RX_UART_Pin</obj_property>
       <obj_property name="ObjectShortName">s_RX_UART_Pin</obj_property>
@@ -31,21 +35,44 @@
       <obj_property name="ElementShortName">o_RX_DV</obj_property>
       <obj_property name="ObjectShortName">o_RX_DV</obj_property>
    </wvobject>
-   <wvobject fp_name="/TOP_TB/DUT/Inst_RESULT_PARSER/i_result" type="array">
-      <obj_property name="ElementShortName">i_result[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i_result[31:0]</obj_property>
+   <wvobject fp_name="/TOP_TB/DUT/Inst_HEX_TO_BIN/o_reg_a" type="array">
+      <obj_property name="ElementShortName">o_reg_a[15:0]</obj_property>
+      <obj_property name="ObjectShortName">o_reg_a[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TOP_TB/DUT/Inst_HEX_TO_BIN/o_operator" type="array">
+      <obj_property name="ElementShortName">o_operator[1:0]</obj_property>
+      <obj_property name="ObjectShortName">o_operator[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TOP_TB/DUT/Inst_HEX_TO_BIN/o_reg_b" type="array">
+      <obj_property name="ElementShortName">o_reg_b[15:0]</obj_property>
+      <obj_property name="ObjectShortName">o_reg_b[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TOP_TB/DUT/Inst_HEX_TO_BIN/o_data_ready" type="logic">
+      <obj_property name="ElementShortName">o_data_ready</obj_property>
+      <obj_property name="ObjectShortName">o_data_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TOP_TB/DUT/Inst_MATH_BLOCK/o_result" type="array">
+      <obj_property name="ElementShortName">o_result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o_result[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TOP_TB/DUT/Inst_RESULT_PARSER/i_result_rdy" type="logic">
+      <obj_property name="ElementShortName">i_result_rdy</obj_property>
+      <obj_property name="ObjectShortName">i_result_rdy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TOP_TB/DUT/Inst_RESULT_PARSER/o_TX_Byte" type="array">
+      <obj_property name="ElementShortName">o_TX_Byte[7:0]</obj_property>
+      <obj_property name="ObjectShortName">o_TX_Byte[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TOP_TB/DUT/Inst_RESULT_PARSER/o_TX_DV" type="logic">
+      <obj_property name="ElementShortName">o_TX_DV</obj_property>
+      <obj_property name="ObjectShortName">o_TX_DV</obj_property>
    </wvobject>
    <wvobject fp_name="/TOP_TB/s_TX_UART_Pin" type="logic">
       <obj_property name="ElementShortName">s_TX_UART_Pin</obj_property>
       <obj_property name="ObjectShortName">s_TX_UART_Pin</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TOP_TB/DUT/Inst_UART_TX/i_TX_Byte" type="array">
-      <obj_property name="ElementShortName">i_TX_Byte[7:0]</obj_property>
-      <obj_property name="ObjectShortName">i_TX_Byte[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TOP_TB/s_Clk" type="logic">
-      <obj_property name="ElementShortName">s_Clk</obj_property>
-      <obj_property name="ObjectShortName">s_Clk</obj_property>
    </wvobject>
    <wvobject fp_name="/TOP_TB/s_sim_done" type="other">
       <obj_property name="ElementShortName">s_sim_done</obj_property>
