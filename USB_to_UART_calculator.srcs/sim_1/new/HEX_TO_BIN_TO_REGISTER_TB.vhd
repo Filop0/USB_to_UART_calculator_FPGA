@@ -17,7 +17,7 @@ architecture sim of tb_HEX_TO_BIN_TO_REGISTER is
   signal r_Clk     : std_logic := '0';
   signal r_RX_DV   : std_logic := '0';
   signal r_RX_Byte : std_logic_vector(7 downto 0) := (others => '0');
-
+  signal r_reset : std_logic := '0';
   -- Sygnały wyjściowe z modułu
   signal w_reg_a          : std_logic_vector(15 downto 0);
   signal w_reg_b          : std_logic_vector(15 downto 0);
@@ -54,6 +54,7 @@ begin
     port map (
       i_Clk            => r_Clk,
       i_RX_DV          => r_RX_DV,
+      i_reset => '0',
       i_RX_Byte        => r_RX_Byte,
       o_reg_a          => w_reg_a,
       o_reg_b          => w_reg_b,

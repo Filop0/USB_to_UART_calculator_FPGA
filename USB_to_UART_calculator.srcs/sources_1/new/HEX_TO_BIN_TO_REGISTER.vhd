@@ -12,6 +12,7 @@ entity HEX_TO_BIN_TO_REGISTER is
   port (
     i_Clk        : in  std_logic;
     i_RX_DV      : in std_logic;
+    i_reset      : in  std_logic;
     i_RX_Byte    : in std_logic_vector(7 downto 0);
     o_reg_a      : out std_logic_vector(15 downto 0);
     o_reg_b      : out std_logic_vector(15 downto 0);
@@ -38,7 +39,13 @@ begin
     variable v_next_acc : unsigned(19 downto 0);
   begin
     if rising_edge(i_Clk) then
+        
+        if i_reset = '1' then
+            r_SM_Main_Reg <= s_Cleanup;
+        end if;
+      
         case r_SM_Main_Reg is
+        
             when s_Idle =>
                 o_data_ready <= '0';
               if i_RX_DV = '1' then       -- Bajt oczekuje na szynie na zapisanie do rejestru

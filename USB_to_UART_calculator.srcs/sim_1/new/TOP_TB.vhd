@@ -11,6 +11,7 @@ component TOP is
          Port (
                 i_Clk       : in  std_logic;
                 i_RX_UART_Pin : in  std_logic;
+                i_reset       : in  std_logic;
                 o_TX_UART_Pin : out std_logic
             );
     end component;
@@ -24,7 +25,7 @@ component TOP is
     -- Sygnały sterujące i wejściowe
     signal s_Clk        : std_logic := '0';
     signal s_RX_UART_Pin  : std_logic := '1';
-
+    signal s_reset  : std_logic := '0';
 
 
     -- Sygnały wyjściowe z DUT
@@ -40,6 +41,7 @@ begin
         port map (
             i_Clk => s_Clk,
             i_RX_UART_Pin => s_RX_UART_Pin,
+            i_reset => s_reset,
             o_TX_UART_Pin => s_TX_UART_Pin
         );
 
@@ -81,7 +83,7 @@ begin
           
     begin
         -- Czas na ustabilizowanie sygnałów po resecie początkowym
-        wait for c_BIT_PERIOD * 2;
+        wait for c_BIT_PERIOD * 2500;
 
         ------------------------------------------------------------------------
         -- Test 1: 7 + 3 = 10
@@ -134,6 +136,54 @@ begin
         UART_WRITE_BYTE(X"31", s_RX_UART_Pin);
         UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
         UART_WRITE_BYTE(X"2F", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"33", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
+        wait until rising_edge(s_Clk);
+        wait for c_BIT_PERIOD * 100;
+        
+        
+        ------------------------------------------------------------------------
+        -- Test 5: 21 / 4 = 5.2 zobaczymy co wyjdzie  
+        ------------------------------------------------------------------------
+        -- Send a command to the UART
+        wait until rising_edge(s_Clk);
+        UART_WRITE_BYTE(X"32", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"31", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"2F", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"34", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
+        wait until rising_edge(s_Clk);
+        wait for c_BIT_PERIOD * 100;
+        
+        
+         ------------------------------------------------------------------------
+        -- Test 6: 21 / 3 = 7 ale reset przed wynikiem 
+        ------------------------------------------------------------------------
+        -- Send a command to the UART
+        wait until rising_edge(s_Clk);
+        UART_WRITE_BYTE(X"32", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"31", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"2F", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"33", s_RX_UART_Pin);
+        s_reset <= '1';
+        UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
+        wait until rising_edge(s_Clk);
+        wait for c_BIT_PERIOD * 100;
+        s_reset <= '0';
+        
+        ------------------------------------------------------------------------
+        -- Test 7: 7 + 3 = 10 Ponowny test działania kalkulatora
+        ------------------------------------------------------------------------
+        -- Send a command to the UART
+        wait until rising_edge(s_Clk);
+        UART_WRITE_BYTE(X"37", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
+        UART_WRITE_BYTE(X"2B", s_RX_UART_Pin);
         UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);
         UART_WRITE_BYTE(X"33", s_RX_UART_Pin);
         UART_WRITE_BYTE(X"0A", s_RX_UART_Pin);

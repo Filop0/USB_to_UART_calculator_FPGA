@@ -13,11 +13,13 @@ entity TOP is
 Port (
     i_Clk       : in  std_logic;
     i_RX_UART_Pin : in  std_logic;
+    i_reset : in  std_logic;
     o_TX_UART_Pin : out std_logic
     );
 end TOP;
 
 architecture Structural of TOP is
+signal s_reset : std_logic;
 signal s_rx_byte : std_logic_vector(7 downto 0);
 signal s_rx_dv : std_logic;
 signal s_reg_a : std_logic_vector(15 downto 0);
@@ -29,6 +31,7 @@ signal s_result_rdy : std_logic;
 signal s_tx_active : std_logic;
 signal s_tx_byte : std_logic_vector(7 downto 0);
 signal s_tx_dv : std_logic;
+
 signal s_reg_a_overflow : std_logic;
 signal s_reg_b_overflow : std_logic;
 signal s_tx_done : std_logic;
@@ -36,6 +39,7 @@ begin
 Inst_UART_RX : entity work.UART_RX
         port map (
             i_Clk       => i_Clk,
+            i_reset     => i_reset,
             i_RX_Serial => i_RX_UART_Pin,
             o_RX_DV     => s_rx_dv,
             o_RX_Byte   => s_rx_byte
@@ -44,6 +48,7 @@ Inst_UART_RX : entity work.UART_RX
 Inst_HEX_TO_BIN : entity work.HEX_TO_BIN_TO_REGISTER
         port map (
             i_Clk       => i_Clk,
+            i_reset     => i_reset,
             i_RX_DV     => s_rx_dv,
             i_RX_Byte   => s_rx_byte,
             o_reg_a     => s_reg_a,
@@ -57,6 +62,7 @@ Inst_HEX_TO_BIN : entity work.HEX_TO_BIN_TO_REGISTER
 Inst_MATH_BLOCK : entity work.MATH_BLOCK
         port map (
             i_Clk       => i_Clk,
+            i_reset     => i_reset,
             i_reg_a     => s_reg_a,
             i_reg_b     => s_reg_b,
             i_operator  => s_operator,
@@ -68,6 +74,7 @@ Inst_MATH_BLOCK : entity work.MATH_BLOCK
 Inst_RESULT_PARSER : entity work.RESULT_PARSER
         port map (
             i_Clk       => i_Clk,
+            i_reset     => i_reset,
             i_reg_a_overflow     => s_reg_a_overflow,
             i_reg_b_overflow     => s_reg_b_overflow,
             i_result_rdy  => s_result_rdy,
@@ -80,6 +87,7 @@ Inst_RESULT_PARSER : entity work.RESULT_PARSER
 Inst_UART_TX : entity work.UART_TX
         port map (
             i_Clk       => i_Clk,
+            i_reset     => i_reset,
             i_TX_DV     => s_tx_dv,
             i_TX_Byte     => s_tx_byte,
             o_TX_Active   => s_tx_active,

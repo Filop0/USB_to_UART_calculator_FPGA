@@ -19,6 +19,7 @@ entity UART_RX is
   port (
     i_Clk       : in  std_logic;
     i_RX_Serial : in  std_logic;
+    i_reset     : in  std_logic;
     o_RX_DV     : out std_logic;
     o_RX_Byte   : out std_logic_vector(7 downto 0)
     );
@@ -43,6 +44,10 @@ begin
   p_UART_RX : process (i_Clk)
   begin
     if rising_edge(i_Clk) then
+    
+      if i_reset = '1' then
+          r_SM_Main <= s_Cleanup;
+      end if;
         
       case r_SM_Main is
 
@@ -50,7 +55,6 @@ begin
           r_RX_DV     <= '0';
           r_Clk_Count <= 0;
           r_Bit_Index <= 0;
-
           if i_RX_Serial = '0' then       -- Start bit detected
             r_SM_Main <= s_RX_Start_Bit;
           else

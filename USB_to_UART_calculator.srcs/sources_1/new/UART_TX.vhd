@@ -20,6 +20,7 @@ entity UART_TX is
     i_Clk       : in  std_logic;
     i_TX_DV     : in  std_logic;
     i_TX_Byte   : in  std_logic_vector(7 downto 0);
+    i_reset     : in  std_logic;
     o_TX_Active : out std_logic;
     o_TX_Serial : out std_logic;
     o_TX_Done   : out std_logic -- nie będę korzystał raczej 
@@ -42,8 +43,14 @@ begin
 
   
   p_UART_TX : process (i_Clk)
+  
   begin
     if rising_edge(i_Clk) then
+    
+    
+      if i_reset = '1' then
+        r_SM_Main <= CLEANUP;
+      end if;
         
       r_TX_Done   <= '0';  -- Default assignment
 

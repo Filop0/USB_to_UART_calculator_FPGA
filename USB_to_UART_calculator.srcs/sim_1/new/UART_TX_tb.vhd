@@ -39,6 +39,7 @@ begin
       )
     port map (
       i_Clk       => r_Clock,
+      i_reset => '0',
       i_TX_DV     => r_TX_DV,
       i_TX_Byte   => r_TX_Byte,
       o_TX_Active => w_TX_Active,
@@ -53,6 +54,7 @@ begin
       )
     port map (
       i_Clk       => r_Clock,
+      i_reset => '0',
       i_RX_Serial => w_UART_Data,
       o_RX_DV     => w_RX_DV,
       o_RX_Byte   => w_RX_Byte

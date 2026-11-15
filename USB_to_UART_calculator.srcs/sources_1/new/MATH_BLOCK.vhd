@@ -14,6 +14,7 @@ entity MATH_BLOCK is
     i_reg_a      : in std_logic_vector(15 downto 0);
     i_reg_b      : in std_logic_vector(15 downto 0);
     i_operator   : in std_logic_vector(1 downto 0); -- 00 dodawanie, 01 odejmowanie, 10 mnożenie 11 dzielenie
+    i_reset      : in  std_logic;
     i_data_ready : in std_logic; -- czy odebrano enter
     o_result     : out std_logic_vector(31 downto 0);
     o_result_rdy : out std_logic
@@ -27,6 +28,12 @@ p_MATH_BLOCK : process (i_Clk)
 --variable cleanup : std_logic;
 begin
     if rising_edge(i_Clk) then
+    
+    if i_reset = '1' then
+       o_result <= (others => '0');
+       o_result_rdy <= '0';     
+    end if; 
+    
     o_result_rdy <= '0';
         if i_data_ready  = '1' then
             if i_operator = "00" then

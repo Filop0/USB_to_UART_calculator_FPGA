@@ -55,6 +55,7 @@ begin
       )
     port map (
       i_Clk       => r_Clock,
+      i_reset => '0',
       i_RX_Serial => r_RX_Serial,
       o_RX_DV     => open,
       o_RX_Byte   => w_RX_Byte
