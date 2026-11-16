@@ -16,6 +16,7 @@ architecture Behavioral of RESULT_PARESER_TB is
             i_result_rdy       : in std_logic;
             i_TX_Active        : in std_logic; -- sprawdzam czy UART nie nadaje w tej chwili
             i_result           : in std_logic_vector(31 downto 0);
+            o_wyswietlono_komunikat : out std_logic;
             o_TX_DV            : out std_logic;
             o_TX_Byte          : out std_logic_vector(7 downto 0)
             );
@@ -31,7 +32,7 @@ architecture Behavioral of RESULT_PARESER_TB is
     signal s_TX_Active  : std_logic := '0';
     signal s_result_rdy : std_logic := '0';
     signal s_result     : std_logic_vector(31 downto 0)  := (others => '0');
-
+    signal s_wyswietlono_komunikat : std_logic := '0';
 
     -- Sygnały wyjściowe z DUT
     signal s_TX_DV   : std_logic;
@@ -51,6 +52,7 @@ begin
             i_TX_Active => s_TX_Active,
             i_result_rdy => s_result_rdy,
             i_result => s_result,
+            o_wyswietlono_komunikat => s_wyswietlono_komunikat,
             o_TX_DV => s_TX_DV,
             o_TX_Byte => s_TX_Byte
         );

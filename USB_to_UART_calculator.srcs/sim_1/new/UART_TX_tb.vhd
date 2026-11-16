@@ -56,6 +56,7 @@ begin
       i_Clk       => r_Clock,
       i_reset => '0',
       i_RX_Serial => w_UART_Data,
+      i_wyswietlono_komunikat => '1',
       o_RX_DV     => w_RX_DV,
       o_RX_Byte   => w_RX_Byte
       );

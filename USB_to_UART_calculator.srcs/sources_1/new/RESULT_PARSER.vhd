@@ -17,6 +17,7 @@ entity RESULT_PARSER is
     i_reset            : in  std_logic;
     i_TX_Active        : in std_logic; -- sprawdzam czy UART nie nadaje w tej chwili
     i_result           : in std_logic_vector(31 downto 0);
+    o_wyswietlono_komunikat     : out std_logic;
     o_TX_DV            : out std_logic;
     o_TX_Byte          : out std_logic_vector(7 downto 0)
   );
@@ -84,6 +85,7 @@ begin
             
             if welcome_msg_counter > 225 then
                 wyswietlono_komunikat := '1';
+                o_wyswietlono_komunikat <= '1';
                 o_TX_DV <= '0';
             end if;
             
@@ -98,6 +100,7 @@ begin
             o_TX_DV <= '0';
             cooldown_cnt  := 30;
             wyswietlono_komunikat := '0';
+            o_wyswietlono_komunikat <= '0';
             welcome_msg_counter := 0;   
         end if;
             

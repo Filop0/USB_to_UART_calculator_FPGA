@@ -31,7 +31,7 @@ signal s_result_rdy : std_logic;
 signal s_tx_active : std_logic;
 signal s_tx_byte : std_logic_vector(7 downto 0);
 signal s_tx_dv : std_logic;
-
+signal s_wyswietlono_komunikat : std_logic;
 signal s_reg_a_overflow : std_logic;
 signal s_reg_b_overflow : std_logic;
 signal s_tx_done : std_logic;
@@ -41,6 +41,7 @@ Inst_UART_RX : entity work.UART_RX
             i_Clk       => i_Clk,
             i_reset     => i_reset,
             i_RX_Serial => i_RX_UART_Pin,
+            i_wyswietlono_komunikat => s_wyswietlono_komunikat,
             o_RX_DV     => s_rx_dv,
             o_RX_Byte   => s_rx_byte
         );
@@ -80,6 +81,7 @@ Inst_RESULT_PARSER : entity work.RESULT_PARSER
             i_result_rdy  => s_result_rdy,
             i_TX_Active => s_tx_active,
             i_result    => s_result,
+            o_wyswietlono_komunikat => s_wyswietlono_komunikat,
             o_TX_DV => s_tx_dv,
             o_TX_Byte => s_tx_byte
         );

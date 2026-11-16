@@ -20,6 +20,7 @@ entity UART_RX is
     i_Clk       : in  std_logic;
     i_RX_Serial : in  std_logic;
     i_reset     : in  std_logic;
+    i_wyswietlono_komunikat     : in std_logic;
     o_RX_DV     : out std_logic;
     o_RX_Byte   : out std_logic_vector(7 downto 0)
     );
@@ -55,10 +56,12 @@ begin
           r_RX_DV     <= '0';
           r_Clk_Count <= 0;
           r_Bit_Index <= 0;
-          if i_RX_Serial = '0' then       -- Start bit detected
-            r_SM_Main <= s_RX_Start_Bit;
-          else
-            r_SM_Main <= s_Idle;
+          if i_wyswietlono_komunikat = '1' then
+              if i_RX_Serial = '0' then       -- Start bit detected
+                r_SM_Main <= s_RX_Start_Bit;
+              else
+                r_SM_Main <= s_Idle;
+              end if;
           end if;
 
           

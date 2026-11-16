@@ -57,6 +57,7 @@ begin
       i_Clk       => r_Clock,
       i_reset => '0',
       i_RX_Serial => r_RX_Serial,
+      i_wyswietlono_komunikat => '1',
       o_RX_DV     => open,
       o_RX_Byte   => w_RX_Byte
       );
